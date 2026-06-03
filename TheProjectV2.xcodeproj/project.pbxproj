@@ -27,6 +27,7 @@
 		73A5E80C2FC9B85C00C52C8A /* TheProjectV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheProjectV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A5E8192FC9B85D00C52C8A /* TheProjectV2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheProjectV2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A5E8232FC9B85D00C52C8A /* TheProjectV2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheProjectV2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9FAE6152FCD880A00801B7B /* TheProjectV2.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = TheProjectV2.xctestplan; path = ../TheProjectV2.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +76,7 @@
 		73A5E8032FC9B85C00C52C8A = {
 			isa = PBXGroup;
 			children = (
+				F9FAE6152FCD880A00801B7B /* TheProjectV2.xctestplan */,
 				73A5E80E2FC9B85C00C52C8A /* TheProjectV2 */,
 				73A5E81C2FC9B85D00C52C8A /* TheProjectV2Tests */,
 				73A5E8262FC9B85D00C52C8A /* TheProjectV2UITests */,

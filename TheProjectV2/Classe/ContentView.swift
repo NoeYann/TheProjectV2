@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var j = Jeu()
+    // Creee un array pour mettre à jour les couleurs de chaque case
     @State var tab: [[Case]] = (0...5).map { y in
         (0...6).map { x in
             Case(pos:(x, y), valeur: 0)
@@ -17,6 +18,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack{
+                // Boutons qui permettent de choisir le mode de jeu
                 HStack(spacing:100){
                     Button("Jouer contre BOT"){
                         print("bot")
@@ -28,11 +30,12 @@ struct ContentView: View {
                     .background(Color.black)
                 }
                 HStack(spacing:16) {
+                    //Affichage des cases
                     ForEach(0...6, id:\.self){ i in
                         VStack(spacing:14) {
                             ForEach(0...5, id:\.self) { k in
                                 
-                                Button(" "){
+                                Button("    "){
                                     print("You pressed column \(i) and line \(k)")
                                     j.grid.grille[i][k] += 1
                                     tab[k][i].update(valeur:j.grid.grille[i][k])

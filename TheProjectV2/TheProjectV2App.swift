@@ -17,18 +17,7 @@ struct TheProjectV2App: App {
     }
     
     init(){
-        let g = Grille()
-        g.printGrille()
-        print(" --- ")
-        g.modifierGrille( 0,  5,  1)
-        g.modifierGrille( 0,  4,  1)
-        g.modifierGrille( 0,  3,  1)
-        g.printGrille()
-        print(" --- ")
-        print(g.placer( 0,  2))
-        g.placer( 2,  2)
-        g.printGrille()
-        print(" --- ")
-        print(g.getPiece(0,5))
+        let j = Jeu()
+        j.playTerm()
     }
 }

@@ -19,6 +19,11 @@ class Grille{
         }
     }
     
+    subscript(col: Int) -> [Int] {
+        get { grille[col] }
+        set { grille[col] = newValue }
+    }
+    
     func printGrille() {
         for i in 0...5 {
             for y in 0...6 {
@@ -40,16 +45,20 @@ class Grille{
         grille[x][y] = player
     }
     
-    func placer(_ x:Int, _ player:Int) -> Bool{
+    func placer(_ x:Int, _ player:Int) -> (Int,Int){
         var i = 5
         while i>=0 {
             if grille[x][i]==0 {
                 modifierGrille(x, i, player)
-                return true
+                return (x,i)
             }
             i-=1
         }
-        return false
+        return (-1,-1)
+    }
+    func canPlacer (_ x:Int) -> Bool{
+        return grille[x][0] == 0
     }
 }
+
 

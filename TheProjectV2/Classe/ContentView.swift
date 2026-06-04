@@ -15,6 +15,7 @@ struct ContentView: View {
             Case(pos:(x, y), valeur: 0)
         }
     }
+    @State var currentGame: (Bool, Int, Int, Int) = (false, 0,0,1)
     var body: some View {
         ZStack {
             VStack{
@@ -36,10 +37,27 @@ struct ContentView: View {
                             ForEach(0...5, id:\.self) { k in
                                 
                                 Button("    "){
-                                    print("You pressed column \(i) and line \(k)")
-                                    j.grid.grille[i][k] += 1
-                                    tab[k][i].update(valeur:j.grid.grille[i][k])
-                                    print(j.grid.grille[i][k])
+                                    currentGame = j.playGrid(i)
+                                    if currentGame.0 == false{
+                                        if currentGame.3 != 0{
+                                            tab[currentGame.2][currentGame.1].update(valeur: currentGame.3)
+                                        }
+                                    }
+                                    else if currentGame.1 == -1 {
+                                        Text("EGALITE")
+                                            .font(.largeTitle)
+                                            .background(Color.black)
+                                    }
+                                    else if currentGame.1 == 1 {
+                                        Text("JOUEUR 1 GAGNE")
+                                            .font(.largeTitle)
+                                            .background(Color.black)
+                                    }
+                                    else if currentGame.1 == 2 {
+                                        Text("JOUEUR 2 GAGNE")
+                                            .font(.largeTitle)
+                                            .background(Color.black)
+                                    }
                                 }
                                 .frame(width:40, height:40)
                                 .background(tab[k][i].couleur)

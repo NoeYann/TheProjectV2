@@ -17,7 +17,7 @@ struct TheProjectV2App: App {
     }
     
     init(){
-        let j = Jeu()
-        j.playTerm()
+        // let j = Jeu()
+        // j.playTerm()
     }
 }

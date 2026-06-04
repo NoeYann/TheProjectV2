@@ -6,12 +6,10 @@
 //
 
 
-//import SwiftUI
+import SwiftUI
 
-//class Jeu : ObservableObject {
-class Jeu {
-    //@Published private(set) var grid: Grille
-    var grid : Grille
+class Jeu : ObservableObject {
+    @Published private(set) var grid: Grille
     private var currentPlayer : Int = 1
     private var isRunning : Bool = true
     
@@ -23,7 +21,7 @@ class Jeu {
         self.grid = g
     }
     
-    func swithPlayer(){
+    func switchPlayer(){
         if currentPlayer == 1 {
             currentPlayer = 2
         }
@@ -126,11 +124,11 @@ class Jeu {
     }
 
     func tour(_ player : Int) -> Int{
-        var valeurs : [String] = ["1","2","3","4","5","6","7"]
+        let valeurs : [String] = ["1","2","3","4","5","6","7"]
         grid.printGrille()
         print("Joueur \(player) quelle colonne joues tu ?")
         var input = readLine() ?? ""
-        var coupOk : Bool = false
+        let coupOk : Bool = false
         while !coupOk {
             if !valeurs.contains(input){
                 print("Entrez un chiffre entre 1 et 7")
@@ -172,6 +170,29 @@ class Jeu {
                 break
             }
         }
+    }
+    
+    func playGrid (_ x : Int) -> (Bool,Int,Int,Int){
+        var isEnd : Int
+        var placementPion : (Int,Int)
+        if grid.canPlacer(x){
+            placementPion = grid.placer(x,currentPlayer)
+            isEnd = end(x,placementPion.1,currentPlayer)
+            if isEnd == -1{
+                return (true,-1,0,0) // il y a égalité
+            }
+            else if isEnd == 1{
+                return (true,1,0,0) // player 1 gagne
+            }
+            else if isEnd == 2{
+                return (true,2,0,0) // player 2 gagne
+            }
+            else{
+                switchPlayer()
+                return (false,placementPion.0,placementPion.1,currentPlayer) // coordonné du pion + n° player
+            }
+        }
+        return (false,0,0,0) // erreur dans le placement du pion
     }
 
 }

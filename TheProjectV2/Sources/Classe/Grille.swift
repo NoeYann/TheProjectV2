@@ -19,6 +19,11 @@ class Grille{
         }
     }
     
+    subscript(col: Int) -> [Int] {
+        get { grille[col] }
+        set { grille[col] = newValue }
+    }
+    
     func printGrille() {
         for i in 0...5 {
             for y in 0...6 {

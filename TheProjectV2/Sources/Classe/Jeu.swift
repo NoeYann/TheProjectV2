@@ -32,7 +32,7 @@ class Jeu {
         }
     }
     
-    func end (_ x:Int, _ y:Int, _ n:Int) -> Int{ // -1: égalité / 0: partie continue / 1: N1 gagne / 2: N2 gagne
+    func end (_ x:Int, _ y:Int, _ n:Int) -> Int{ //-1: égalité / 0: partie continue / 1: N1 gagne / 2: N2 gagne
         //test egalite
         var egalite : Bool = true
         for i in 0...6{
@@ -80,12 +80,10 @@ class Jeu {
         var X : Int = x
         var Y : Int = y
         while X > 0 && Y > 0{
-            //print("- ",X,Y)
             X -= 1
             Y -= 1
         }
         while X <= 6 && Y <= 5{
-            //print("+ ",X,Y)
             if grid [X][Y] == n{
                 aligned += 1
             }
@@ -99,19 +97,16 @@ class Jeu {
             X += 1
             Y += 1
         }
-        //print("~~~~")
         
         //test diago /
         aligned = 0
         X = x
         Y = y
         while X > 0 && Y < 5{
-            //print("- ",X,Y)
             X -= 1
             Y += 1
         }
         while X != 6 && Y != 0{
-            //print("+ ",X,Y)
             if grid [X][Y] == n{
                 aligned += 1
             }
@@ -130,7 +125,53 @@ class Jeu {
         return 0
     }
 
-    func play(){
-        
+    func tour(_ player : Int) -> Int{
+        var valeurs : [String] = ["1","2","3","4","5","6","7"]
+        grid.printGrille()
+        print("Joueur \(player) quelle colonne joues tu ?")
+        var input = readLine() ?? ""
+        var coupOk : Bool = false
+        while !coupOk {
+            if !valeurs.contains(input){
+                print("Entrez un chiffre entre 1 et 7")
+                input = readLine() ?? ""
+            }
+            else if (!grid.canPlacer(Int(input)!-1)) {
+                print("Vous ne pouvez pas placer dans cette colonne (elle est pleine)")
+                input = readLine() ?? ""
+            }
+            else{
+                return Int(input)! - 1
+            }
+        }
     }
+
+    func playTerm(){
+        var run : Bool = true
+        var placement : (Int, Int)
+        var continuer : Int
+        while run == true{
+            placement = grid.placer(tour(1),1)
+            continuer = end(placement.0,placement.1,1)
+            if continuer == -1{
+                print("Egalité")
+                run = false
+            }
+            else if continuer == 1{
+                print("GG player 1")
+                break
+            }
+            placement = grid.placer(tour(2),2)
+            continuer = end(placement.0,placement.1,2)
+            if continuer == -1{
+                print("Egalité")
+                run = false
+            }
+            else if continuer == 2{
+                print("GG player 2")
+                break
+            }
+        }
+    }
+
 }

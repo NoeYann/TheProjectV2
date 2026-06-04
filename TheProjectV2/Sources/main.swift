@@ -40,7 +40,6 @@ let j3 = Jeu(g3)
 print(j3.end(3, 2, 1))
 print("")
 
-/*
 print(" test \\")//
 let g4 = Grille()
 g4.modifierGrille(0, 2, 1)
@@ -75,7 +74,7 @@ print(" --- ")
 let j5 = Jeu(g5)
 print(j5.end(2, 5, 1))
 print("")
-*/
+
 
 print("test alignement en milieu de grille")//
 let g7 = Grille()
@@ -104,16 +103,17 @@ print(j8.end(0, 0, 1))
 print("")
 
 
-/*
+
 print(" égalité")//
 let g9 = Grille()
 let pattern: [[Int]] = [
-    [1,2,1,2,1,2],
-    [1,2,1,2,1,2],
-    [2,1,2,1,2,1],
-    [2,1,2,1,2,1],
-    [1,2,1,2,1,2],
-    [1,2,1,2,1,2]
+    [1,2,1,2,1,2],  // x=0
+    [1,2,1,2,1,2],  // x=1
+    [2,1,2,1,2,1],  // x=2
+    [2,1,2,1,2,1],  // x=3
+    [1,2,1,2,1,2],  // x=4
+    [1,2,1,2,1,2],  // x=5
+    [2,1,2,1,2,1]   // x=6 ← manquait !
 ]
 for x in 0...6 {
     for y in 0...5 {
@@ -124,4 +124,3 @@ g9.printGrille()
 print(" --- ")
 let j9 = Jeu(g9)
 print(j9.end(6, 5, 1))
-*/

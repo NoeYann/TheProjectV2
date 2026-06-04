@@ -79,12 +79,13 @@ class Jeu {
         aligned = 0
         var X : Int = x
         var Y : Int = y
-        while X >= 0 && Y >= 0{
-            print(X,Y)
+        while X > 0 && Y > 0{
+            //print("- ",X,Y)
             X -= 1
             Y -= 1
         }
         while X <= 6 && Y <= 5{
+            //print("+ ",X,Y)
             if grid [X][Y] == n{
                 aligned += 1
             }
@@ -98,17 +99,19 @@ class Jeu {
             X += 1
             Y += 1
         }
-
+        //print("~~~~")
+        
         //test diago /
         aligned = 0
         X = x
         Y = y
-        while X != 0 && Y != 5{
-            print("x1:\(X) y1:\(Y)")
+        while X > 0 && Y < 5{
+            //print("- ",X,Y)
             X -= 1
             Y += 1
         }
         while X != 6 && Y != 0{
+            //print("+ ",X,Y)
             if grid [X][Y] == n{
                 aligned += 1
             }
@@ -119,12 +122,11 @@ class Jeu {
                 print("DEBUG : DIAG /")
                 return n
             }
-            print("x2:\(X) y2:\(Y)")
             X += 1
-            Y += 1
+            Y -= 1
         }
 
-        //sinon ca continu
+        //sinon le jeu continu
         return 0
     }
 
